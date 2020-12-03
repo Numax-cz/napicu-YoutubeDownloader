@@ -7,6 +7,8 @@ print('============================================')
 print('Video se načítá!')
 print('Prosím počkejte...')
 print('============================================')
+
+
 try: 
     YTvideo = pytube.YouTube(url)
     print('============================================')
@@ -47,15 +49,16 @@ else:
             tag = 22
         elif rozliseni ==('1080p') or rozliseni == ('1080'):
             tag = 137
-jmenoSouboru = input('Jak chcete pojmenovat video?: ')
-print('============================================')
+
+
+
 try:
     dw = YTvideo.streams.get_by_itag(tag)
 except:
     print('Špatný tag')
 print('Video se stahuje.....')
 try:
-    dw.download(filename=jmenoSouboru)
+    dw.download("NapicuDownloader", filename=YTvideo.title)
 except:
     print('============================================')
     print('Chyba')
@@ -64,6 +67,6 @@ except:
     exit()
 finally:
     print()
-    print('Video bylo staženo!')
+    print('Video bylo staženo! Do složky NapicuDownloader')
     os.system('pause')
     exit()
